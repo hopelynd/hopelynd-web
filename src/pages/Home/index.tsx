@@ -10,6 +10,7 @@ const HomePage: React.FC = () => {
     <PageContainer ghost>
       <div className={styles.container}>
         <Guide name={trim(name)} />
+        <div>使用 github workflow 构建测试</div>
       </div>
     </PageContainer>
   );
