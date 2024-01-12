@@ -14,7 +14,7 @@ window.updateAvailable = new Promise((resolve, reject) => {
   }
 
   navigator.serviceWorker
-    .register('/service-worker.js', {
+    .register('/sw.js', {
       updateViaCache: 'none',
     })
     .then((registration) => {
@@ -27,6 +27,7 @@ window.updateAvailable = new Promise((resolve, reject) => {
       }, 60 * 1000); // 60000ms -> check each minute
 
       registration.onupdatefound = () => {
+        console.info('update found')
         const installingServiceWorker = registration.installing;
         installingServiceWorker.onstatechange = () => {
           if (installingServiceWorker.state === 'installed') {
@@ -43,8 +44,15 @@ window.updateAvailable = new Promise((resolve, reject) => {
 
 window.registerForUpdateAvailableNotification = (caller, methodName) => {
   window.updateAvailable.then((isUpdateAvailable) => {
+    console.log('updateAvailable',isUpdateAvailable);
     if (isUpdateAvailable) {
+      console.log('更新了');
       caller.invokeMethodAsync(methodName).then();
     }
   });
 };
+
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+
+  console.log('文件更新了');
+});

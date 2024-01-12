@@ -6,6 +6,7 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
+  scripts: [{src: 'sw-registrator.js'}],
   layout: {
     title: '@umijs/max',
   },
