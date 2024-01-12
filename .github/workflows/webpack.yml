@@ -23,7 +23,7 @@ jobs:
       run: npm install
 
     - name: 打包构建
-      run: npm build
+      run: npm run build
 
     - name: 上传阿里云
       uses: cross-the-world/scp-pipeline@master
