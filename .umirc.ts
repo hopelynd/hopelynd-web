@@ -7,8 +7,9 @@ export default defineConfig({
   initialState: {},
   request: {},
   scripts: [{src: '/sw-registrator.js'}],
+  metas: [{name: '个人测试运营后台'}],
   layout: {
-    title: '@umijs/max',
+    title: '个人测试运营后台',
   },
   routes: [
     {
