@@ -11,7 +11,7 @@ let cachesList = [
   pre + 'index.html',
 ];
 
-const CACHE_NAME = 'cache-v2'
+const CACHE_NAME = 'cache-v3'
 
 // 安装注册 sw
 self.addEventListener('install', event => {
