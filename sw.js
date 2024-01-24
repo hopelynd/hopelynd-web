@@ -10,7 +10,7 @@ let cachesList = [
   pre + 'index.html',
 ];
 
-const curCacheName = 'updater'
+const curCacheName = 'updater-v1'
 
 self.addEventListener('install', event => {
   console.log('sw install');
@@ -20,6 +20,12 @@ self.addEventListener('install', event => {
       .then(cache => cache.addAll(cachesList))
       .then(ok => console.log('add all ok'), e => console.log(e))
   );
+});
+
+self.addEventListener('message', function(event) {
+  if (event.data === 'update') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('activate', event => {
