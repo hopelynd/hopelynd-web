@@ -53,6 +53,5 @@ window.registerForUpdateAvailableNotification = (caller, methodName) => {
 };
 
 navigator.serviceWorker.addEventListener('controllerchange', () => {
-
   console.log('文件更新了');
 });
