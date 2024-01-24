@@ -5,6 +5,7 @@
  * @contact: chenliheng@youlai.cn
  * @description: #
  */
+let refreshing;
 window.updateAvailable = new Promise((resolve, reject) => {
   if (!('serviceWorker' in navigator)) {
     const errorMessage = `This browser doesn't support service workers`;
@@ -53,5 +54,9 @@ window.registerForUpdateAvailableNotification = (caller, methodName) => {
 };
 
 navigator.serviceWorker.addEventListener('controllerchange', () => {
-  console.log('文件更新了');
+  if (refreshing) return;
+  refreshing = true;
+  if (confirm('A new version of the app is available. Do you want to refresh?')) {
+    window.location.reload();
+  }
 });
