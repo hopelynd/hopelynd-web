@@ -11,6 +11,7 @@ export default defineConfig({
   layout: {
     title: '个人测试运营后台',
   },
+  hash: true,
   copy: [
     { from: './sw-registrator.js', to: 'dist/sw-registrator.js' },
     { from: './sw.js', to: 'dist/sw.js' }
